@@ -5,6 +5,7 @@
  * Date: 2018/10/1
  * Time: 13:16
  */
+require("VarAndFunc.php");
 @$productid=$_GET["productid"];
 
 if (empty($productid)) {

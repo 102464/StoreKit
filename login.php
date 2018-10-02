@@ -5,6 +5,7 @@
  * Date: 2018/10/1
  * Time: 13:15
  */
+require("VarAndFunc.php");
 @$username=$_GET["username"];
 @$pw=$_GET["password"];
 //echo $username;

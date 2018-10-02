@@ -5,6 +5,7 @@
  * Date: 2018/10/1
  * Time: 15:36
  */
+require("VarAndFunc.php");
 @$authkey=$_GET["authkey"];
 if (empty($authkey)) { die(false); }
 $con=/*mysqli_connect("127.0.0.1","root","root");*/VarAndFunc::ConnectMYSQL();

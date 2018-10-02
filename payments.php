@@ -5,6 +5,7 @@
  * Date: 2018/10/1
  * Time: 13:15
  */
+require("VarAndFunc.php");
 $oper=$_GET['oper'];
 $authkey=$_GET['authkey'];
 @$productid=$_GET['productid'];
