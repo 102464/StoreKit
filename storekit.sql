@@ -8,4 +8,4 @@ CREATE TABLE Products(productname varchar(1024),productid varchar(10));
 CREATE TABLE Deposits(username varchar(32),deposit varchar(10));
 CREATE TABLE Payments(username varchar(32),productid varchar(10));
 INSERT INTO Accounts VALUES ('admin','admin');
-                                                             
+/* DEFAULT Account and password: admin admin */                                                            
