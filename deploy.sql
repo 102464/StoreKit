@@ -1,6 +1,9 @@
 /* STOREKIT DATABASE DEPLOYMENT SCRIPT */
 /* Open your MYSQL Monitor and input this line and enter: 
 CREATE DATABASE StoreKit;
+Then open PHPStorm, connect to your database.
+Right-click the SQL command and click "run 'xxx.sql'"
+Then the deployment is successfully completed
 */
 CREATE TABLE Accounts(username varchar(32),password varchar(32));
 CREATE TABLE AuthKey(username varchar(32),authkey varchar(10));
