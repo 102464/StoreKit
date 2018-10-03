@@ -874,7 +874,7 @@
     </column>
     <column id="222" parent="213" name="productname">
       <Position>1</Position>
-      <DataType>varchar(32)|0s</DataType>
+      <DataType>varchar(1024)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="223" parent="213" name="productid">
