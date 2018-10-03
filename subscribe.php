@@ -6,11 +6,25 @@
  * Time: 14:16
  */
 require("VarAndFunc.php");
-$productname=$_GET["productname"];
-if (empty($productname)) { die(false); }
-
+$authkey=$_GET['authkey'];
+$oper=$_GET['oper'];
+@$subscription=$_GET['subscription'];
+if (empty($oper)) { die(false); }
+if (empty($authkey)) { die(false); }
 $con=VarAndFunc::ConnectMYSQL();
-//TODO: 在此处插入订阅项目的代码。
-// Now Unfinished
 
-return 0;
+switch ($oper) {
+    case "ShowSubscriptions":
+        echo "free|personal|business|enterprise";
+        return 0;
+        break;
+    case "Subscribe":
+        $productid=VarAndFunc::GetProductId($con,$subscription);
+        $username=VarAndFunc::GetUserNameFromAuthKey($con,$authkey);
+        $price=VarAndFunc::GetProductPrice($con,$productid);
+        VarAndFunc::StartPurchase($con,$username,$productid,$price);
+        break;
+    default:
+        die(false);
+        break;
+}

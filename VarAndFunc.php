@@ -38,10 +38,40 @@ class VarAndFunc
         return $productname[0];
     }
 
-    public static function AddProduct($sqlcon,$productname){
+    public static function GetProductId($sqlcon,$productname){
+        $query=mysqli_query($sqlcon,"select productid from products where productname='"
+            . $productname . "'");
+        $productid=mysqli_fetch_array($query);
+        if (empty($productid)) { die(false); }
+        return $productid[0];
+    }
+
+    public static function GetProductPrice($sqlcon,$productid){
+        $query=mysqli_query($sqlcon,"select price from products where productid='" . $productid . "'");
+        $price=mysqli_fetch_array($query);
+        if (empty($price)) { die(false); }
+        return $price[0];
+    }
+
+    public static function AddProduct($sqlcon,$productname,$price){
     $productid=rand(0,100000000);
-    mysqli_query($sqlcon,"insert into products values('" . $productname . "','" . $productid . "')");
+    mysqli_query($sqlcon,"insert into products values('" . $productname . "','" . $productid . "','"
+       . $price . "')");
     return $productid;
+    }
+
+    public static function StartPurchase($sqlcon,$account,$productid,$price){
+        $deposit=VarAndFunc::GetAccountDeposit($sqlcon,$account);
+        $purchasedDeposit=$deposit-$price;
+        if ( $purchasedDeposit >= 0 ) {
+            mysqli_query($sqlcon,"update Deposits set deposit='"
+                . $purchasedDeposit . "' where username='" . $account . "'");
+            mysqli_query($sqlcon,"insert into payments values ('"
+                . $account . "','" . $productid . "')");
+            return 0;
+        }else{
+            die(false);
+        }
     }
 
     public static function CheckPurchased($sqlcon,$account,$productid){
