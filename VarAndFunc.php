@@ -38,6 +38,12 @@ class VarAndFunc
         return $productname[0];
     }
 
+    public static function AddProduct($sqlcon,$productname){
+    $productid=rand(0,100000000);
+    mysqli_query($sqlcon,"insert into products values('" . $productname . "','" . $productid . "')");
+    return $productid;
+    }
+
     public static function CheckPurchased($sqlcon,$account,$productid){
         if (empty($username)) { die(false); }
         $query=mysqli_query($sqlcon,"select * from payments where username=" . $account .
